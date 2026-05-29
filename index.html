@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Responsive Gallery</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+
+        /* --- Gallery Grid Layout --- */
+        .gallery-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            /* Creates a responsive grid without needing media queries */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* --- Gallery Item --- */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            aspect-ratio: 4 / 3; /* Keeps all grid items uniform */
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        /* --- Image Styling & Zoom Effect --- */
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+        }
+
+        /* --- Hover State: Zoom & Fade --- */
+        .gallery-item:hover img {
+            transform: scale(1.1); /* Zoom effect */
+            opacity: 0.85;        /* Fade effect */
+        }
+
+        /* --- Caption Overlay --- */
+        .caption-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none; /* Allows hover to stay smooth */
+        }
+
+        .caption-text {
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Hover State: Caption Reveal --- */
+        .gallery-item:hover .caption-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Minimal Gallery</h1>
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/450?random=1" alt="Mountain landscape">
+            <div class="caption-overlay">
+                <p class="caption-text">Misty Mountains</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/450?random=2" alt="Calm ocean waves">
+            <div class="caption-overlay">
+                <p class="caption-text">Serene Waters</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/450?random=3" alt="Deep forest path">
+            <div class="caption-overlay">
+                <p class="caption-text">Forest Pathway</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/450?random=4" alt="Desert dunes">
+            <div class="caption-overlay">
+                <p class="caption-text">Desert Dunes</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/450?random=5" alt="City architecture">
+            <div class="caption-overlay">
+                <p class="caption-text">Urban Geometry</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/450?random=6" alt="Starry night sky">
+            <div class="caption-overlay">
+                <p class="caption-text">Midnight Sky</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
